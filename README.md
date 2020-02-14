@@ -2,7 +2,9 @@
 simple interface for rl experiments
 
 Everything in red must be defined by the user depending on the use case.  The rest is all handled in the background. 
-- ![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/leen_rl/architecture.png)
+- ![alt text](leen_rl/architecture.png)
+
+(Aside from defining a custom policy, there are various standard Policies approaches to choose from)
 
 Here is an example walk-through of how to set-up a leen rl experiment
 
