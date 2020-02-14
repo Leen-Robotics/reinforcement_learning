@@ -1,12 +1,11 @@
 # Leen RL
-simple interface for rl experiments
+A simple interface for writing modular RL experiments
 
-Everything in red must be defined by the user depending on the use case.  The rest is all handled in the background. 
 - ![alt text](leen_rl/architecture.png)
-
-Here is an example walk-through of how to set-up a leen rl experiment
+Everything in red must is defined by the user (depending on the nature of the experiment).  The rest is handled in the background. 
 
 ## RLExperiment
+Here is an example walk-through of how to set-up a leen rl experiment
 ```python
 from leen_rl import RLExperiment
 
