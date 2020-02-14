@@ -31,7 +31,7 @@ class YourWorld(Environment):
 
 your_environment = YourWorld()
 ```
-We provide a few examples for you, some of which use environments from openAI gym
+We provide a few examples for you, some of which use environments from openAI gym or turtles, etc
 ![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_racing_car/racecar.gif)
 ```python
 from gym import make
@@ -51,8 +51,7 @@ class Racetrack(Environment):
 your_environment = RaceTrack()
 ```
 
-others of which define a custom environment using visualisation packages like turtles:
-- ![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_turtle/turtle_demo.gif)
+![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_turtle/turtle_demo.gif)
 ```python
 from turtle import Screen, Turtle
 
@@ -70,6 +69,7 @@ class TurtleWorld(Environment):
 
 your_environment = TurtleWorld()
 ```
+If you wish you may define a custom environment for your experiment
 
 ## Agent
 
