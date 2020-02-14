@@ -2,6 +2,7 @@
 A simple interface for writing modular RL experiments
 
 ![alt text](leen_rl/architecture.png)
+
 Everything in red must is defined by the user (depending on the nature of the experiment).  The rest is handled in the background. 
 
 ## RLExperiment
@@ -15,7 +16,6 @@ your_experiment = RLExperiment(
 )
 your_experiment.run(number_of_steps=1000)
 ```
-TODO: functionality for learning and plotting
 
 ### Environment
 When setting up your environment, you need only define two functions: `initialise_state()` and `update_state()` which is where you can define or integrate any environment into your experiment 
@@ -85,7 +85,7 @@ your_agent = Agent(
 ```
 
 #### Sensor
-The `sensor` maps the environment's state to an observation.  It is where you specify which signals (from the environment) the agent has access to (it may only able to see partial information from the environment's state, etc). 
+The `sensor` maps the environment's state to an observation.  It is where you specify which signals (from the environment) the agent has access to (you may make it so the agent only has access to partial information from the environment's state, etc). 
 
 ```python
 from leen_rl import Sensor, Environment, Observation
@@ -97,7 +97,9 @@ class YourAgentsSensor(Sensor):
 your_sensor = YourAgentsSensor()
 ```
 
-Since this is how the agent will get information from the environment and is thus dependent on the environment. For example, in the racecar example above, the agent has access to the environment's pixels (note: the `Observation` class can take in any keyword arguments you like, e.g. `pixels`)
+Since this is how the agent will get information from the environment, it is dependent on the environment you setup for the experiment.  
+
+For example, in the racecar example above, the agent has access to the environment's pixels (note: the `Observation` class can take in any keyword arguments you like, e.g. `pixels`)
 ```python
 class DriverView(Sensor):
     def get_observation(self, state:Environment) -> Observation:
@@ -159,7 +161,7 @@ from leen_rl import Policy, BeliefState, Action
 
 class YourAgentsPolicy(Policy):
     def get_action(self, belief_state:BeliefState) -> Action:
-        raise NotImplementedError
+        pass
 
 your_policy = YourAgentsPolicy(action_space_path = "path/to/your/actions.csv")
 ```
@@ -205,6 +207,8 @@ steer,gas,brake
 ```
 will produce four `Action` type actions with the attributes `steer`, `gas` and `brake`
 
-TODO: allow for continual action spaces to be defined
-TODO: integrate intrinsic rewards
-TODO: PID controller in predefined policies
+##### TODO:
+- allow for continual action spaces to be defined
+- integrate intrinsic rewards
+- PID controller in predefined policies
+- integrate functionality for learning and plotting
