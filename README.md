@@ -20,12 +20,16 @@ integrate any environment into your experiment.
 
 ## Agent
 
+TODO: integrate intrinsic rewards
+
 ## Sensor
 
 ## CognitiveMap
 
 ## Policy
 Aswell as defining a custom policy, there are various kinds of pre-defined Policies to choose from, including PolicyFunction, ValueFunction, QFunction, GoalPlanning, etc.
+
+TODO: PID controller in predefined policies
 
 Actionspaces
 TODO: allow for continual action spaces to be defined
