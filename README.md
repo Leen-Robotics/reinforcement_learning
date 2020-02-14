@@ -161,7 +161,7 @@ class YourAgentsPolicy(Policy):
     def get_action(self, belief_state:BeliefState) -> Action:
         raise NotImplementedError
 
-your_policy = YourAgentsPolicy(action_space_path = 'path/to/your/actions.csv`)
+your_policy = YourAgentsPolicy(action_space_path = "path/to/your/actions.csv")
 ```
 
 Aswell as defining a custom policy, there are various kinds of pre-defined Policies to choose from, including `PolicyFunction`, `ValueFunction`, `QFunction`, `GoalPlanning`, etc.
@@ -173,7 +173,7 @@ class YourAgentsPolicy(QFunction):
     def q_function(self, belief_state:BeliefState, action:Action) -> float:
         pass
 
-your_policy = YourAgentsPolicy(action_space_path = 'path/to/your/actions.csv`)
+your_policy = YourAgentsPolicy(action_space_path = "path/to/your/actions.csv")
 ```
 or the `state_transition_function` for the `ValueFunction` or `GoalPlanning` policies, as well as the `value_function` or `reward_function` respectively:
 ```python
@@ -186,7 +186,7 @@ class YourAgentsPolicy(ValueFunction):
     def value_function(self, belief_state:BeliefState) -> float:
         pass
 
-your_policy = YourAgentsPolicy(action_space_path = 'path/to/your/actions.csv`)
+your_policy = YourAgentsPolicy(action_space_path = "path/to/your/actions.csv")
 ```
 or alternatively try the random policy as a baseline (which needs nothing defining at all)
 ```python
