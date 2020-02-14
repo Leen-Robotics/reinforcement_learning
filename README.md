@@ -1,7 +1,7 @@
 # Leen RL
 A simple interface for writing modular RL experiments
 
-- ![alt text](leen_rl/architecture.png)
+![alt text](leen_rl/architecture.png)
 Everything in red must is defined by the user (depending on the nature of the experiment).  The rest is handled in the background. 
 
 ## RLExperiment
