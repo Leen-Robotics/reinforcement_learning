@@ -17,7 +17,7 @@ your_experiment.run(number_of_steps=1000)
 ```
 TODO: functionality for learning and plotting
 
-## Environment
+### Environment
 When setting up your environment, you need only define two functions: `initialise_state()` and `update_state()` which is where you can define or integrate any environment into your experiment 
 ```python
 from leen_rl import Environment
@@ -71,15 +71,15 @@ your_environment = TurtleWorld()
 ```
 If you wish you may define a custom environment for your experiment
 
-## Agent
+### Agent
 
 TODO: integrate intrinsic rewards
 
-## Sensor
+#### Sensor
 
-## CognitiveMap
+#### CognitiveMap
 
-## Policy
+#### Policy
 Aswell as defining a custom policy, there are various kinds of pre-defined Policies to choose from, including PolicyFunction, ValueFunction, QFunction, GoalPlanning, etc.
 
 TODO: PID controller in predefined policies
