@@ -66,6 +66,6 @@ def _convert_image_to_ascii(
     max_index = len(ascii_scale)
     return row_separator.join(
         column_separator.join(
-            ASCII_scale[int(pixel*max_index)] for pixel in row
+            ascii_scale[int(pixel*max_index)] for pixel in row
         ) for row in pixels
     ) 
