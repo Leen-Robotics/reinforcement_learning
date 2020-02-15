@@ -32,7 +32,7 @@ class YourWorld(Environment):
 your_environment = YourWorld()
 ```
 We provide a few examples for you, some of which use environments from openAI gym or turtles, etc
-![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_racing_car/racecar.gif)
+![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_racing_car/racecar_policy.gif)
 ```python
 from gym import make
 
@@ -139,6 +139,8 @@ class YourAgentsMind(CognitiveMap):
 
 your_cognitive_map = YourAgentsMind()
 ```
+
+![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_racing_car/racecar.gif)
 
 Or you may wish to skip this step altogether, in which case you can pass out a belief state with exactly the same information as the observation.
 ```python
