@@ -32,25 +32,6 @@ class YourWorld(Environment):
 your_environment = YourWorld()
 ```
 We provide a few examples for you, some of which use environments from openAI gym or turtles, etc
-![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_racing_car/racecar_policy.gif)
-```python
-from gym import make
-
-class Racetrack(Environment):
-    def initialise_state(self) -> None:
-        self.environment = make("CarRacing-v0")
-        self.pixels = self.environment.reset()
-        self.environment.render()
-
-    def update_state(self, action:Action) -> None:
-        self.pixels,_, _, _ = self.environment.step(
-            action = [action.steer, action.gas, action.brake]
-        )
-        self.environment.render()
-
-your_environment = RaceTrack()
-```
-
 ![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_turtle/turtle_demo.gif)
 ```python
 from turtle import Screen, Turtle
@@ -68,6 +49,24 @@ class TurtleWorld(Environment):
         self.agent.fd(self.agent_speed)
 
 your_environment = TurtleWorld()
+```
+![alt text](https://raw.githubusercontent.com/leen-robotics/reinforcement_learning/master/examples/examples_with_racing_car/racecar_policy.gif)
+```python
+from gym import make
+
+class Racetrack(Environment):
+    def initialise_state(self) -> None:
+        self.environment = make("CarRacing-v0")
+        self.pixels = self.environment.reset()
+        self.environment.render()
+
+    def update_state(self, action:Action) -> None:
+        self.pixels,_, _, _ = self.environment.step(
+            action = [action.steer, action.gas, action.brake]
+        )
+        self.environment.render()
+
+your_environment = RaceTrack()
 ```
 If you wish you may define a custom environment for your experiment
 
