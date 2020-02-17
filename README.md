@@ -68,7 +68,7 @@ class Racetrack(Environment):
 
 your_environment = RaceTrack()
 ```
-If you wish you may define a custom environment for your experiment
+(Demo of our default racecar in action: https://youtu.be/c47-XyuRAvE)
 
 ### Agent
 The `agent` is comprised of three parts: the `sensor`, `cognitive_map` and `policy`  
