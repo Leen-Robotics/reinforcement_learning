@@ -118,26 +118,6 @@ class DriverMind(CognitiveMap):
                 1, 1, 1, 1, 0, 0, 1, 1,
                 1, 1, 1, 1, 0, 0, 1, 1,
             ],
-            "UTURN_LEFT" : [
-                1, 1, 1, 1, 1, 1, 1, 1,
-                1, 1, 1, 1, 1, 1, 1, 1,
-                1, 1, 0, 0, 1, 1, 1, 1,
-                0, 0, 0, 0, 0, 1, 1, 1,
-                0, 0, 1, 1, 0, 0, 1, 1,
-                0, 0, 1, 1, 0, 0, 1, 1,
-                0, 0, 1, 1, 0, 0, 1, 1,
-                0, 0, 1, 1, 0, 0, 1, 1,
-            ],
-            "UTURN_RIGHT" : [
-                1, 1, 1, 1, 1, 1, 1, 1,
-                1, 1, 1, 1, 1, 1, 1, 1,
-                1, 1, 1, 1, 0, 0, 1, 1,
-                1, 1, 1, 0, 0, 0, 0, 0,
-                1, 1, 0, 0, 1, 1, 0, 0,
-                1, 1, 0, 0, 1, 1, 0, 0,
-                1, 1, 0, 0, 1, 1, 0, 0,
-                1, 1, 0, 0, 1, 1, 0, 0,
-            ],
         }
         return min(
             pixel_features.keys(),
@@ -157,6 +137,7 @@ class DriverMind(CognitiveMap):
         reduced_pixels = self._feature_engineer_map(pixels=observation.pixels[:-15,:,:])
         reduced_flattened_pixels = reduced_pixels.flatten()
         return BeliefState(
+            previous_turn = previous_action.steer if previous_action else 0,
             reduced_pixels = reduced_pixels,
             current_road_type = self._identify_road_from_pixels(pixels = reduced_flattened_pixels),
             not_moved = previous_belief_state and all(
@@ -169,13 +150,9 @@ class DriverDecisions(PolicyFunction):
         LEFT,LEFT_SLOWER,LEFT_FASTER,_,STEADY,SLOWER,FASTER,_,RIGHT,RIGHT_SLOWER,RIGHT_FASTER,_ = self.action_space
         if belief_state.current_road_type == "STRAIGHT_ROAD" and belief_state.not_moved:
             return FASTER
-        if belief_state.current_road_type == "GRADUAL_LEFT":
+        if belief_state.current_road_type in ("GRADUAL_LEFT", "SHARP_RIGHT"):
             return RIGHT
-        if belief_state.current_road_type == "GRADUAL_RIGHT":
-            return LEFT
-        if belief_state.current_road_type in ("SHARP_RIGHT", "UTURN_RIGHT"):
-            return RIGHT
-        if belief_state.current_road_type in ("SHARP_LEFT", "UTURN_LEFT"):
+        if belief_state.current_road_type in ("GRADUAL_RIGHT", "SHARP_LEFT"):
             return LEFT
         return STEADY
         
