@@ -97,7 +97,47 @@ class DriverMind(CognitiveMap):
                 1, 1, 0, 0, 1, 1, 1, 1,
                 1, 1, 0, 0, 1, 1, 1, 1,
                 1, 1, 0, 0, 1, 1, 1, 1,
-            ]
+            ],
+            "SHARP_LEFT" : [
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1,
+                0, 0, 0, 1, 1, 1, 1, 1,
+                0, 0, 0, 0, 1, 1, 1, 1,
+                1, 1, 0, 0, 1, 1, 1, 1,
+                1, 1, 0, 0, 1, 1, 1, 1,
+                1, 1, 0, 0, 1, 1, 1, 1,
+            ],
+            "SHARP_RIGHT" : [
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 0, 0, 0,
+                1, 1, 1, 1, 0, 0, 0, 0,
+                1, 1, 1, 1, 0, 0, 1, 1,
+                1, 1, 1, 1, 0, 0, 1, 1,
+                1, 1, 1, 1, 0, 0, 1, 1,
+            ],
+            "UTURN_LEFT" : [
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 0, 0, 1, 1, 1, 1,
+                0, 0, 0, 0, 0, 1, 1, 1,
+                0, 0, 1, 1, 0, 0, 1, 1,
+                0, 0, 1, 1, 0, 0, 1, 1,
+                0, 0, 1, 1, 0, 0, 1, 1,
+                0, 0, 1, 1, 0, 0, 1, 1,
+            ],
+            "UTURN_RIGHT" : [
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 0, 0, 1, 1,
+                1, 1, 1, 0, 0, 0, 0, 0,
+                1, 1, 0, 0, 1, 1, 0, 0,
+                1, 1, 0, 0, 1, 1, 0, 0,
+                1, 1, 0, 0, 1, 1, 0, 0,
+                1, 1, 0, 0, 1, 1, 0, 0,
+            ],
         }
         return min(
             pixel_features.keys(),
@@ -132,6 +172,10 @@ class DriverDecisions(PolicyFunction):
         if belief_state.current_road_type == "GRADUAL_LEFT":
             return RIGHT
         if belief_state.current_road_type == "GRADUAL_RIGHT":
+            return LEFT
+        if belief_state.current_road_type in ("SHARP_RIGHT", "UTURN_RIGHT"):
+            return RIGHT
+        if belief_state.current_road_type in ("SHARP_LEFT", "UTURN_LEFT"):
             return LEFT
         return STEADY
         
