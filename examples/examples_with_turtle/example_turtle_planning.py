@@ -66,14 +66,14 @@ class TurtleAct(GoalPlanning):
     def _distance(self, vector1:List[float], vector2:List[float]) -> float:
         return 1 - euclidean(vector1, vector2)
 
-    def reward_function(self, belief_state:BeliefState) -> float:
+    def infer_reward(self, belief_state:BeliefState) -> float:
         reward = self._distance(
             vector1 = belief_state.position, 
             vector2 = self.target_position
         )
         return reward
 
-    def state_transition_function(self, action:Action, belief_state:BeliefState) -> BeliefState:
+    def infer_belief_state(self, action:Action, belief_state:BeliefState) -> BeliefState:
         x,y = belief_state.position
         theta = radians(belief_state.heading) 
         x_next = x + (cos(theta)*belief_state.velocity)
