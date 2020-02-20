@@ -1,0 +1,5 @@
+intent,template1,template2,template3
+BYE,see ya,chat later,goodbye
+GREET,hello,hi nice to meet you,howdy
+ASK_NAME,what's your name?,who are you?,what should i call you?
+CONFUSED,sorry i don't understand,could you rephrase that?, i don't quite get you
