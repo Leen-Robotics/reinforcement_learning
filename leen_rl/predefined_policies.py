@@ -1,9 +1,17 @@
 from typing import Optional
 from random import choice, sample
 #=======================
-from .policy import Policy, ValueFunction, load_in_action_space
+from .policy_approximator import Policy, PolicyFunction, ValueFunction, load_in_action_space
 from .state_action import Action, BeliefState
 #=======================
+
+class RandomExploration(Policy):
+    def __str__(self) -> str:
+        return __class__.__name__
+
+    def get_action(self, belief_state:BeliefState) -> Action:
+        return choice(self.action_space)   
+
 
 class GoalPlanning(ValueFunction):
     def __init__(
@@ -56,26 +64,10 @@ class GoalPlanning(ValueFunction):
         return self._planning_algorithm(belief_state)
 
 
-class RandomExploration(Policy):
-    def __str__(self) -> str:
-        return __class__.__name__
+class MatrixFactorisation_PolicyClassifier(PolicyFunction):
+    pass 
+    #TODO
 
-    def get_action(self, belief_state:BeliefState) -> Action:
-        return choice(self.action_space)   
-
-
-class PID(Policy):
-    weight_P:float = 10.
-    weight_I:float = 1.
-    weight_D:float = 1.
-    delta_time:int = 1
-
-    def __str__(self) -> str:
-        return __class__.__name__
-
-    def get_action(self, belief_state:BeliefState) -> Action:
-        P = self.weight_P * belief_state.error
-        I = self.weight_I * belief_state.error * self.delta_time
-        D = - self.weight_D * belief_state.error * belief_state.delta_input / self.delta_time
-        PID = P + I + D
-        raise NotImplementedError
+class ExtremeLearningMachine_PolicyClassifier(PolicyFunction):
+    pass
+    #TODO
