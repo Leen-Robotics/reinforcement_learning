@@ -1,6 +1,6 @@
 from typing import Optional
 #=======================
-from .policy import Policy
+from .policy_approximator import Policy
 from .environment_sensor_map import Environment, Sensor, CognitiveMap
 from .state_action import Action, Observation, BeliefState
 #=======================
