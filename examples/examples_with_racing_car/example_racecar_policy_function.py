@@ -146,7 +146,7 @@ class DriverMind(CognitiveMap):
         )
 
 class DriverDecisions(PolicyFunction):
-    def policy_function(self, belief_state:BeliefState) -> Action:
+    def infer_action(self, belief_state:BeliefState) -> Action:
         LEFT,LEFT_SLOWER,LEFT_FASTER,_,STEADY,SLOWER,FASTER,_,RIGHT,RIGHT_SLOWER,RIGHT_FASTER,_ = self.action_space
         if belief_state.current_road_type == "STRAIGHT_ROAD" and belief_state.not_moved:
             return FASTER
