@@ -19,6 +19,9 @@ class GoalPlanning(ValueFunction):
     def __str__(self) -> str:
         return __class__.__name__
 
+    def infer_reward(belief_state:BeliefState) -> float:
+        raise NotImplementedError
+    
     def _discounted_reward(self, belief_state:BeliefState, depth:int=1) -> float:
         discount_factor = 1/(depth+1)
         return self.infer_reward(belief_state) * discount_factor 
