@@ -1,27 +1,21 @@
 #=======================
 from .state_action import Action, BeliefState, load_in_action_space
 #=======================
-class Approximator:
-    def learn(self) -> None:
-        raise NotImplementedError 
-
-class π(Approximator):
+class π:
     def infer_action(self, belief_state:BeliefState) -> Action:
         raise NotImplementedError
 
-class φ(Approximator):
+class φ:
     def infer_belief_state(self, belief_state:BeliefState, action:Action) -> BeliefState:
         raise NotImplementedError
 
-class V(Approximator):
+class V:
     def infer_state_value(self, action:Action) -> float:
         raise NotImplementedError
 
-class Q(Approximator):
+class Q:
     def infer_action_value(self, belief_state:BeliefState, action:Action) -> float:
         raise NotImplementedError
-
-
     
 class Policy:
     def __init__(self,action_space_path: str) -> None:

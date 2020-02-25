@@ -3,6 +3,7 @@ from random import choice, sample
 #=======================
 from .policy_approximator import Policy, PolicyFunction, ValueFunction, load_in_action_space
 from .state_action import Action, BeliefState
+#from .machine_learning_models.extreme_learning_machine import ExtremeLearningMachine
 #=======================
 
 class RandomExploration(Policy):
@@ -63,11 +64,5 @@ class GoalPlanning(ValueFunction):
     def infer_state_value(self, belief_state:BeliefState) -> float:
         return self._planning_algorithm(belief_state)
 
-
-class MatrixFactorisation_PolicyClassifier(PolicyFunction):
-    pass 
-    #TODO
-
-class ExtremeLearningMachine_PolicyClassifier(PolicyFunction):
-    pass
+#class ELMPolicyFunction(PolicyFunction, ExtremeLearningMachine):
     #TODO
